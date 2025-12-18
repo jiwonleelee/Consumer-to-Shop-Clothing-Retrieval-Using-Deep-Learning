@@ -70,7 +70,9 @@ class DeepFashionC2S(Dataset):
             return {
                 "consumer": cons_img,
                 "shop": shop_img,
-                "item_id": row["item_id"]
+                "item_id": row["item_id"],
+                "consumer_path": row["consumer_path"],
+                "shop_path": row["shop_path"]
             }
 
         except FileNotFoundError:
