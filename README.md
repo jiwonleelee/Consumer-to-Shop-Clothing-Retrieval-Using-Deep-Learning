@@ -19,7 +19,36 @@ This repository is organized to clearly separate **intermediate experiments** fr
 - **04_demo/**  
   **Final demo folder for evaluation.**  
   This directory contains the cleaned and finalized notebook(s) required to reproduce the final quantitative results and qualitative retrieval demo.  
-  **Only this folder is needed to run the final Consumer-to-Shop retrieval demo.**
 
-- **reports/**  
+- **05_live_demo/**  
+  **Live demo folder for presentation.**  
+  This directory contains the live demo code, including intuitive visualizations for presentation purposes.
+
+- **report/**  
   Final report and presentation materials.
+
+## 🛠️ Key Contributions
+
+I was responsible for the core design and experimental analysis throughout the project.
+
+### ✅ Topic Selection & Dataset Collection
+* Selected **"Image-based Product Search"** as the core topic, addressing the high demand in real-world e-commerce environments.
+* Utilized the **DeepFashion C2S benchmark dataset** to define and address the significant domain gap between consumer and shop images.
+
+### ✅ Dataset Sampling Strategy
+* **Problem**: The original DeepFashion dataset was too large for training under limited computational resources.
+* **Solution**: Conducted **Item ID-level sampling** to reduce volume while preserving intra-item variability and data diversity.
+* **Result**: Configured the dataset with a **Train/Val/Test ratio of 8:1:1**, ensuring sufficient positive pairs for each item so the model could learn meaningful embeddings.
+
+### ✅ Backbone Selection & Comparative Analysis
+* **Experimental Setup**: Compared model architectures while fixing the loss function to **Semi-Hard Triplet Loss**.
+* **Models Compared**: **ResNet-34 vs. EfficientNet-B3**.
+* **Analysis & Results**: Confirmed that **EfficientNet-B3** achieved a faster decrease in loss and significantly better performance across all **Recall@K** metrics.
+* **Conclusion**: Analyzed that EfficientNet’s **Compound Scaling** provides a substantial advantage for fine-grained fashion feature extraction, leading to its selection as the final backbone.
+
+### ✅ Embedding Dimension Optimization
+* **Experiment**: Compared embedding dimensions (**128, 256, and 512**) to find the optimal balance between representational power and generalization.
+* **Results**:
+    * **128-dim**: Lacked the capacity to fully compress rich fashion features extracted by the backbone.
+    * **512-dim**: Performance declined due to the **Curse of Dimensionality**, where feature space sparsity hindered generalization.
+    * **256-dim**: Recorded the highest **Recall@5** performance on the validation set, identifying it as the optimal dimension for the final model.
