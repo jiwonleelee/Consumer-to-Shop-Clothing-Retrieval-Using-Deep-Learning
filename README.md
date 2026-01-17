@@ -24,6 +24,8 @@ This repository is organized to clearly separate **intermediate experiments** fr
   **Live demo folder for presentation.**  
   This directory contains the live demo code, including intuitive visualizations for presentation purposes.
 
+![Example](./Images/example.png)
+
 - **report/**  
   Final report and presentation materials.
 
@@ -45,6 +47,8 @@ I was responsible for the core design and experimental analysis throughout the p
 * **Models Compared**: **ResNet-34 vs. EfficientNet-B3**.
 * **Analysis & Results**: Confirmed that **EfficientNet-B3** achieved a faster decrease in loss and significantly better performance across all **Recall@K** metrics.
 * **Conclusion**: Analyzed that EfficientNet’s **Compound Scaling** provides a substantial advantage for fine-grained fashion feature extraction, leading to its selection as the final backbone.
+
+![Backbone Comparison](./Images/backbone_comparison.png)
 
 ### ✅ Embedding Dimension Optimization
 * **Experiment**: Compared embedding dimensions (**128, 256, and 512**) to find the optimal balance between representational power and generalization.
